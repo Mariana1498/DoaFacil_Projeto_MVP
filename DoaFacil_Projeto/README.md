@@ -3,9 +3,9 @@
 **Plataforma web que liga quem tem alimento sobrando a quem precisa.**
 MVP da 1ª entrega · Laboratório de Empreendimentos Inovadores · UNINASSAU Boa Viagem · ADS 4º período, Turma A (Noite)
 
-\---
+---
 
-## 01\. Nome do projeto e integrantes
+## 01. Nome do projeto e integrantes
 
 **DoaFácil** · projeto da Fábrica de Software, alinhado à **ODS 2 da ONU (Fome Zero e Agricultura Sustentável)**.
 
@@ -18,7 +18,7 @@ MVP da 1ª entrega · Laboratório de Empreendimentos Inovadores · UNINASSAU Bo
 
 > Todos fazem commits e respondem pelo produto. As funções acima são o foco de cada um, não uma barreira.
 
-## 02\. Problema e público-alvo
+## 02. Problema e público-alvo
 
 Todos os dias, padarias, restaurantes, feiras e famílias têm comida boa que sobra e vai para o lixo, enquanto perto dali existem pessoas, cozinhas comunitárias e associações sem alimento suficiente. O gargalo não é só ter comida: quem quer doar não sabe a quem entregar, e quem precisa não fica sabendo a tempo do que está disponível, principalmente quando o alimento estraga rápido.
 
@@ -29,7 +29,7 @@ Todos os dias, padarias, restaurantes, feiras e famílias têm comida boa que so
 
 Nosso ponto de partida é o **Recife**.
 
-## 03\. Solução e funcionalidades
+## 03. Solução e funcionalidades
 
 O DoaFácil funciona como um mural de doações: o doador publica, quem precisa reserva, e a entrega é confirmada. Funcionalidades essenciais:
 
@@ -41,7 +41,7 @@ O DoaFácil funciona como um mural de doações: o doador publica, quem precisa 
 * Painel com os números de doações disponíveis, reservadas e entregues
 * Editar e excluir doações
 
-## 04\. Escopo do MVP
+## 04. Escopo do MVP
 
 **Funcionalidade principal demonstrável:** o ciclo completo de uma doação, de **publicar → aparecer na lista → reservar → confirmar entrega**, feito direto na tela e sem recarregar a página.
 
@@ -49,7 +49,7 @@ O DoaFácil funciona como um mural de doações: o doador publica, quem precisa 
 
 **Fica para depois do MVP:** login de doadores e instituições, mapa e distância, avisos por WhatsApp/e-mail, fotos dos alimentos, avaliação de instituições, relatórios de impacto, testes automatizados e publicação online.
 
-## 05\. Tecnologias utilizadas
+## 05. Tecnologias utilizadas
 
 |Tecnologia|Uso no projeto|
 |-|-|
@@ -60,14 +60,14 @@ O DoaFácil funciona como um mural de doações: o doador publica, quem precisa 
 |HTML, CSS e JavaScript puro|Interface responsiva, busca ao vivo, reserva sem recarregar|
 |Git e GitHub|Versionamento e histórico da equipe|
 
-## 06\. Análise de viabilidade
+## 06. Análise de viabilidade
 
 * **Tecnologia e conhecimento:** a stack já era conhecida pela equipe (vem da disciplina de Frameworks Back-End), então não precisamos aprender nada novo para entregar.
 * **Recursos:** tudo é gratuito e roda em qualquer computador com Node.js.
 * **Prazo:** com o escopo reduzido ao ciclo reservar → entregar, coube no prazo.
 * **Ajuste feito:** trocamos o MySQL pelo SQLite no MVP para o projeto rodar com dois comandos. Para uso real, com muitos usuários, o plano é voltar a um banco de servidor.
 
-## 07\. Cronograma e riscos
+## 07. Cronograma e riscos
 
 |Data|O que ficou pronto|
 |-|-|
@@ -86,13 +86,13 @@ O DoaFácil funciona como um mural de doações: o doador publica, quem precisa 
 |Alimento vencido ser publicado|Validação de data e alertas de validade|
 |Conflitos no Git entre cinco pessoas|Commits pequenos e frequentes, cada um na sua parte|
 
-## 08\. Como executar o projeto
+## 08. Como executar o projeto
 
 Pré-requisito: **Node.js 18 ou superior** ([nodejs.org](https://nodejs.org)).
 
 ```bash
-git clone https://github.com/yulamendes/DoaFacil\_Projeto.git
-cd DoaFacil\_Projeto
+git clone https://github.com/Mariana1498/DoaFacil_Projeto_MVP.git
+cd DoaFacil_Projeto_MVP/DoaFacil_Projeto
 npm install
 npm start
 ```
@@ -113,7 +113,7 @@ Abra **http://localhost:8090** no navegador.
 ### Estrutura
 
 ```
-DoaFacil\_Projeto/
+DoaFacil_Projeto/
 ├── appmain.js            # servidor e configuração
 ├── models/               # banco (db.js), modelo Doacao e dados de exemplo
 ├── routes/doacoes.js     # rotas e regras de negócio
@@ -122,7 +122,7 @@ DoaFacil\_Projeto/
 └── docs/TESTES.md        # registro de testes
 ```
 
-\---
+---
 
 Projeto acadêmico, de uso educacional. A equipe usou o Claude (IA da Anthropic) como apoio em partes do código, do visual e da documentação; tudo foi revisado e testado pelos integrantes.
 
