@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DoaFácil · Doação de alimentos no Recife</title>
+  <meta name="description" content="DoaFácil conecta quem tem alimento sobrando a quem precisa.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e7a4c'/%3E%3Cpath d='M16 24c-5-3.5-7-7-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 23 14c0 3-2 6.500-7 10z' fill='%23f2a516'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="wrap topo-in">
+      <a class="marca" href="/" aria-label="DoaFácil, página inicial">
+        <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#1e7a4c"/><path d="M16 24c-5-3.5-7-7-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 23 14c0 3-2 6.5-7 10z" fill="#f2a516"/></svg>
+        <span>DoaFácil</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="/" {{#if (eq pagina 'home')}}aria-current="page"{{/if}}>Início</a>
+        <a href="/doacoes" {{#if (eq pagina 'doacoes')}}aria-current="page"{{/if}}>Doações</a>
+        <a href="/sobre" {{#if (eq pagina 'sobre')}}aria-current="page"{{/if}}>Sobre o MVP</a>
+        <a class="btn btn-primario btn-pequeno" href="/doacoes/nova">Doar alimento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    {{{body}}}
+  </main>
+
+  <footer class="rodape">
+    <div class="wrap">
+      <p><strong>DoaFácil</strong> · MVP da 1ª entrega · Laboratório de Empreendimentos Inovadores · UNINASSAU Boa Viagem</p>
+      <p>Alinhado à ODS 2 da ONU: Fome Zero e Agricultura Sustentável.</p>
+    </div>
+  </footer>
+
+  <div id="avisos" class="avisos" role="status" aria-live="polite"></div>
+
+  <dialog id="dlg-reserva" class="dialogo">
+    <form method="dialog" id="form-reserva">
+      <h2>Quem vai retirar?</h2>
+      <p class="mudo">Informe seu nome ou o da instituição. O doador usa esse nome para identificar a retirada.</p>
+      <label for="retiradoPor">Nome</label>
+      <input id="retiradoPor" name="retiradoPor" required minlength="3" maxlength="80" autocomplete="name" placeholder="Ex.: Associação Mãos que Ajudam">
+      <p class="erro-campo" id="erro-reserva" hidden></p>
+      <div class="dlg-acoes">
+        <button type="button" class="btn btn-contorno" data-fechar>Voltar</button>
+        <button type="submit" class="btn btn-primario">Reservar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-excluir" class="dialogo">
+    <form method="post" id="form-excluir">
+      <h2>Excluir esta doação?</h2>
+      <p class="mudo" id="txt-excluir">Essa ação não pode ser desfeita.</p>
+      <div class="dlg-acoes">
+        <button type="button" class="btn btn-contorno" data-fechar>Manter</button>
+        <button type="submit" class="btn btn-perigo">Excluir doação</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

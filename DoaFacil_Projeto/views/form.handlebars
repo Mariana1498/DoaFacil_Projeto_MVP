@@ -1,0 +1,75 @@
+<section class="wrap pagina estreita">
+  <a class="voltar" href="/doacoes">Voltar para as doações</a>
+  <h1 class="h1-pagina">{{titulo}}</h1>
+  <p class="mudo">Os campos com * são obrigatórios. O telefone fica visível para quem for retirar, por isso use um número que você atenda.</p>
+
+  {{#if erros}}<p class="alerta-form" role="alert">Revise os campos destacados abaixo.</p>{{/if}}
+
+  <form method="post" action="{{acao}}" class="formulario" novalidate>
+    <fieldset>
+      <legend>O que será doado</legend>
+      <div class="linha">
+        <div class="col-2">
+          <label for="alimento">Alimento *</label>
+          <input id="alimento" name="alimento" value="{{doacao.alimento}}" maxlength="80" required placeholder="Ex.: Pão francês, arroz, marmitas">
+          {{#if erros.alimento}}<p class="erro-campo">{{erros.alimento}}</p>{{/if}}
+        </div>
+        <div>
+          <label for="categoria">Categoria *</label>
+          <select id="categoria" name="categoria">{{#each categorias}}<option value="{{nome}}" {{#if selecionado}}selected{{/if}}>{{nome}}</option>{{/each}}</select>
+        </div>
+      </div>
+      <div class="linha">
+        <div>
+          <label for="quantidade">Quantidade *</label>
+          <input id="quantidade" name="quantidade" type="number" step="0.1" min="0.1" value="{{doacao.quantidade}}" required inputmode="decimal">
+          {{#if erros.quantidade}}<p class="erro-campo">{{erros.quantidade}}</p>{{/if}}
+        </div>
+        <div>
+          <label for="unidade">Unidade *</label>
+          <select id="unidade" name="unidade">{{#each unidades}}<option value="{{nome}}" {{#if selecionado}}selected{{/if}}>{{nome}}</option>{{/each}}</select>
+        </div>
+        <div>
+          <label for="validade">Validade</label>
+          <input id="validade" name="validade" type="date" value="{{doacao.validade}}" min="{{hoje}}">
+          {{#if erros.validade}}<p class="erro-campo">{{erros.validade}}</p>{{/if}}
+        </div>
+      </div>
+      <label for="observacao">Observações</label>
+      <input id="observacao" name="observacao" value="{{doacao.observacao}}" maxlength="240" placeholder="Horário de retirada, embalagem, cuidados...">
+    </fieldset>
+
+    <fieldset>
+      <legend>Quem doa e onde retirar</legend>
+      <div class="linha">
+        <div class="col-2">
+          <label for="nomeDoador">Nome do doador *</label>
+          <input id="nomeDoador" name="nomeDoador" value="{{doacao.nomeDoador}}" maxlength="80" required autocomplete="name" placeholder="Pessoa, padaria, restaurante...">
+          {{#if erros.nomeDoador}}<p class="erro-campo">{{erros.nomeDoador}}</p>{{/if}}
+        </div>
+        <div>
+          <label for="bairro">Bairro da retirada *</label>
+          <input id="bairro" name="bairro" value="{{doacao.bairro}}" maxlength="60" required placeholder="Ex.: Boa Viagem">
+          {{#if erros.bairro}}<p class="erro-campo">{{erros.bairro}}</p>{{/if}}
+        </div>
+      </div>
+      <div class="linha">
+        <div>
+          <label for="telefone">Telefone com DDD *</label>
+          <input id="telefone" name="telefone" value="{{doacao.telefone}}" maxlength="20" required inputmode="tel" autocomplete="tel" placeholder="(81) 99999-9999">
+          {{#if erros.telefone}}<p class="erro-campo">{{erros.telefone}}</p>{{/if}}
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" value="{{doacao.email}}" maxlength="120" autocomplete="email" placeholder="Opcional">
+          {{#if erros.email}}<p class="erro-campo">{{erros.email}}</p>{{/if}}
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-acoes">
+      <a class="btn btn-contorno" href="/doacoes">Cancelar</a>
+      <button class="btn btn-primario" type="submit">{{botao}}</button>
+    </div>
+  </form>
+</section>

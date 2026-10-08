@@ -1,0 +1,12 @@
+<section class="wrap pagina estreita">
+  <div class="vazio">
+    {{#if erroServidor}}
+      <h1 class="h1-pagina">Algo deu errado do nosso lado</h1>
+      <p class="mudo">Tente de novo em instantes. Se continuar, avise a equipe.</p>
+    {{else}}
+      <h1 class="h1-pagina">Página não encontrada</h1>
+      <p class="mudo">O endereço pode ter mudado ou a doação foi excluída.</p>
+    {{/if}}
+    <a class="btn btn-primario" href="/doacoes">Ver doações</a>
+  </div>
+</section>

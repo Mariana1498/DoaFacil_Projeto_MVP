@@ -1,0 +1,44 @@
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Tem comida sobrando aqui. Tem prato vazio ali. O DoaFácil liga os dois.</h1>
+      <p class="lead">Padarias, restaurantes, feiras e famílias do Recife publicam o que podem doar. Quem precisa vê tudo em uma lista, reserva a retirada e o doador acompanha até a entrega.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-primario" href="/doacoes/nova">Quero doar</a>
+        <a class="btn btn-contorno" href="/doacoes?status=disponivel">Quero retirar</a>
+      </div>
+    </div>
+
+    <aside class="mural" aria-label="Doações disponíveis agora">
+      <h2>Disponível agora</h2>
+      {{#each recentes}}
+        <a class="ticket" href="/doacoes?status=disponivel">
+          <div class="ticket-corpo">
+            <strong>{{alimento}}</strong>
+            <span>{{bairro}} · {{nomeDoador}}</span>
+          </div>
+          <div class="ticket-qtd">{{numero quantidade}} <small>{{unidade}}</small></div>
+        </a>
+      {{else}}
+        <p class="mudo vazio-mini">Nenhuma doação disponível no momento. <a href="/doacoes/nova">Publique a primeira.</a></p>
+      {{/each}}
+    </aside>
+  </div>
+</section>
+
+<section class="numeros" aria-label="Números da plataforma">
+  <div class="wrap numeros-in">
+    <p><strong>{{stats.disponiveis}}</strong> doações esperando retirada</p>
+    <p><strong>{{stats.reservadas}}</strong> com retirada combinada</p>
+    <p><strong>{{stats.entregues}}</strong> já entregues, somando <strong>{{numero stats.kgEntregues}} kg</strong></p>
+  </div>
+</section>
+
+<section class="wrap passos">
+  <h2>Como funciona</h2>
+  <ol class="passos-lista">
+    <li><h3>Publique</h3><p>O doador informa o alimento, a quantidade, o bairro e a validade. Leva menos de um minuto.</p></li>
+    <li><h3>Reserve</h3><p>Quem precisa escolhe na lista e reserva. A doação sai da fila de disponíveis para ninguém ir à toa.</p></li>
+    <li><h3>Entregue</h3><p>Depois da retirada, a entrega é confirmada e entra na conta do que já foi doado.</p></li>
+  </ol>
+</section>

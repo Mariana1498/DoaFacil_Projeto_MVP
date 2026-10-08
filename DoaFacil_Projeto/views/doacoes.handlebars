@@ -1,0 +1,83 @@
+<section class="wrap pagina">
+  <div class="pagina-topo">
+    <div>
+      <h1 class="h1-pagina">Doações</h1>
+      <p class="mudo">Alimentos publicados por doadores do Recife. Reserve o que você consegue retirar.</p>
+    </div>
+    <a class="btn btn-primario" href="/doacoes/nova">Doar alimento</a>
+  </div>
+
+  <form class="filtros" method="get" action="/doacoes" id="filtros" role="search">
+    <div class="campo-busca">
+      <label for="q">Buscar</label>
+      <input type="search" id="q" name="q" value="{{q}}" placeholder="Alimento, bairro ou doador" autocomplete="off">
+    </div>
+    <div>
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="categoria">
+        <option value="">Todas</option>
+        {{#each filtroCategorias}}<option value="{{nome}}" {{#if selecionado}}selected{{/if}}>{{nome}}</option>{{/each}}
+      </select>
+    </div>
+    <div>
+      <label for="status">Situação</label>
+      <select id="status" name="status">
+        <option value="">Todas</option>
+        {{#each filtroStatus}}<option value="{{valor}}" {{#if selecionado}}selected{{/if}}>{{nome}}</option>{{/each}}
+      </select>
+    </div>
+    {{#if filtrando}}<a class="limpar" href="/doacoes">Limpar filtros</a>{{/if}}
+    <noscript><button class="btn btn-contorno" type="submit">Filtrar</button></noscript>
+  </form>
+
+  <div id="area-dinamica">
+    <p class="resumo-linha" id="resumo">
+      {{stats.disponiveis}} disponíveis · {{stats.reservadas}} reservadas · {{stats.entregues}} entregues
+    </p>
+
+    <div class="grade" id="lista">
+      {{#each doacoes}}
+      <article class="cartao status-{{status}}" data-id="{{id}}">
+        <header class="cartao-topo">
+          <span class="selo selo-{{status}}">{{statusLabel}}</span>
+          {{#if alerta}}<span class="selo selo-{{alertaTipo}}">{{alerta}}</span>{{/if}}
+        </header>
+        <h2>{{alimento}}</h2>
+        <p class="qtd">{{numero quantidade}} {{unidade}} <span class="cat">{{categoria}}</span></p>
+        <dl class="detalhes">
+          <div><dt>Bairro</dt><dd>{{bairro}}</dd></div>
+          {{#if validade}}<div><dt>Validade</dt><dd>{{data validade}}</dd></div>{{/if}}
+          <div><dt>Doador</dt><dd>{{nomeDoador}}</dd></div>
+          {{#unless entregue}}<div><dt>Contato</dt><dd><a href="tel:{{telefone}}">{{telefone}}</a></dd></div>{{/unless}}
+          {{#if retiradoPor}}<div><dt>Retirada</dt><dd>{{retiradoPor}}</dd></div>{{/if}}
+        </dl>
+        {{#if observacao}}<p class="obs">{{observacao}}</p>{{/if}}
+
+        <footer class="cartao-acoes">
+          {{#if disponivel}}
+            <button class="btn btn-primario btn-pequeno" data-reservar="{{id}}" data-nome="{{alimento}}">Quero retirar</button>
+          {{/if}}
+          {{#if reservada}}
+            <button class="btn btn-primario btn-pequeno" data-status="{{id}}" data-novo="entregue">Confirmar entrega</button>
+            <button class="btn btn-contorno btn-pequeno" data-status="{{id}}" data-novo="disponivel">Cancelar reserva</button>
+          {{/if}}
+          <span class="espaco"></span>
+          <a class="link-acao" href="/doacoes/{{id}}/editar">Editar</a>
+          <button class="link-acao perigo" data-excluir="{{id}}" data-nome="{{alimento}}">Excluir</button>
+        </footer>
+      </article>
+      {{else}}
+      <div class="vazio">
+        {{#if filtrando}}
+          <h2>Nada encontrado com esses filtros</h2>
+          <p class="mudo">Tente outro bairro ou categoria, ou <a href="/doacoes">veja todas as doações</a>.</p>
+        {{else}}
+          <h2>Ainda não há doações por aqui</h2>
+          <p class="mudo">Quando alguém publicar, vai aparecer nesta lista.</p>
+          <a class="btn btn-primario" href="/doacoes/nova">Publicar a primeira doação</a>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
